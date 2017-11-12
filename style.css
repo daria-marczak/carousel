@@ -1,0 +1,41 @@
+#carousel {
+    margin: 0 auto;
+    text-align: center;
+    width: 640px;
+    height:426px;
+    border: 1px solid grey;
+    overflow: hidden;
+}
+
+ul {
+    width: 3200px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    float:left;
+    width:640px;
+    height: 426px;
+}
+
+p {
+    width: 20px;
+    height: auto;
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+}
+
+#left-arrow {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+#right-arrow {
+    display: flex;
+
+}

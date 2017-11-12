@@ -1,0 +1,40 @@
+#carousel {
+    margin: 0 auto;
+    text-align: center;
+    width: 640px;
+    height:426px;
+    border: 1px solid grey;
+    overflow: hidden;
+}
+
+ul {
+    width: 3200px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    li {
+        list-style-type: none;
+        float:left;
+        width:640px;
+        height: 426px;
+    }
+}
+
+.controls {
+    font-family: sans-serif;
+    width: 640px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    line-height: 50px;
+    transition: all 150ms ease;
+    position: absolute;
+    top: 30%;
+    #prev {
+        float:left;
+        padding-left: 10px;
+    }
+    #next{
+        float:right;
+        padding-right: 10px;
+    }
+}
