@@ -14,18 +14,21 @@ $(function(){
         var $prev = $("#prev");
         var $next = $("#next");
 
+        function changeSlide() {
+            currentSlide++;
+            if (currentSlide === $slide.length) {
+                currentSlide = 1;
+                $carouselInner.css("margin-left", 0)};
+            pause;
+        };
+
         function startSlider() {
             interval = setInterval(function() {
-                $carouselInner.animate({"margin-left": "-=" + width}, animationSpeed, function changeSlide() {
-                    currentSlide++;
-                        if (currentSlide === $slide.length) {
-                            currentSlide = 1;
-                            $carouselInner.css("margin-left", 0);
-                    };
-                });
-            }, pause);
+                $carouselInner.animate({"margin-left": "-=" + width}, animationSpeed, function changeSlide());
+            });
+        });
 
-        }
+
 
         function stopSlider() {
             clearInterval(interval);
@@ -36,6 +39,6 @@ $(function(){
 
         $carousel.on("mouseenter", stopSlider).on("mouseleave", startSlider);
 
-        startSlider()
+        startSlider();
 
-        })
+    });
