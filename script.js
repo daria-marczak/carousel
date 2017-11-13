@@ -31,9 +31,7 @@ $(function(){
             clearInterval(interval);
         }
 
-        $next.on("click", function() {
-            changeSlide();
-        });
+        $next.on("click", changeSlide());
 
 
         $carousel.on("mouseenter", stopSlider).on("mouseleave", startSlider);
