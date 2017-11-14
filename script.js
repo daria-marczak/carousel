@@ -43,9 +43,9 @@ $(function() {
 
     $next.on("click", changeSlide());
 
-    $prev.on("click", previousSlide);
+    $prev.on("click", previousSlide());
 
-    $carousel.on("mouseenter", stopSlider).on("mouseleave", startSlider);
+    $carousel.on("mouseenter", stopSlider()).on("mouseleave", startSlider());
 
     startSlider();
 
