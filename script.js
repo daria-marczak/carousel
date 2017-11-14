@@ -25,7 +25,7 @@ $(function() {
     function previousSlide() {
         currentSlide--;
         if (currentSlide === $slide.length) {
-            $carouselInner.css("margin-left", width)
+            $carouselInner.css("margin-left", width);
         };
     }
 
@@ -33,7 +33,7 @@ $(function() {
         interval = setInterval(function() {
             $carouselInner.animate({
                 "margin-left": "-=" + width
-            }, animationSpeed, changeSlide(), pause);
+            }, animationSpeed, changeSlide), pause;
         });
     };
 
@@ -41,11 +41,11 @@ $(function() {
         clearInterval(interval);
     }
 
-    $next.on("click", changeSlide());
+    $next.on("click", changeSlide);
 
-    $prev.on("click", previousSlide());
+    $prev.on("click", previousSlide);
 
-    $carousel.on("mouseenter", stopSlider()).on("mouseleave", startSlider());
+    $carousel.on("mouseenter", stopSlider).on("mouseleave", startSlider);
 
     startSlider();
 
