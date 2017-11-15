@@ -1,7 +1,7 @@
 $(function() {
 
     var width = 640;
-    var animationSpeed = 1000;
+    var animationSpeed = 8000;
     var pause = 4000;
     var currentSlide = 1;
 
@@ -27,14 +27,17 @@ $(function() {
         if (currentSlide === $slide.length) {
             $carouselInner.css("margin-left", width);
         };
+        if (currentSlide < 0) {
+            currentSlide = $slide.length - 1;
+        }
     }
 
     function startSlider() {
         interval = setInterval(function() {
             $carouselInner.animate({
                 "margin-left": "-=" + width
-            }, animationSpeed, changeSlide), pause;
-        });
+            }, animationSpeed, changeSlide);
+        }), pause;
     };
 
     function stopSlider() {
