@@ -1,55 +1,58 @@
 $(function() {
+  var width = 640;
+  var animationSpeed = 500;
+  var pause = 1000;
 
-    var width = 640;
-    var animationSpeed = 8000;
-    var pause = 4000;
-    var currentSlide = 1;
+  var $carousel = $("#carousel");
+  var $carouselInner = $carousel.find("ul");
 
-    var $carousel = $("#carousel");
-    var $carouselInner = $carousel.find("ul");
-    var $slide = $carouselInner.find("li");
+  var interval;
 
-    var interval;
+  var $prev = $("#prev");
+  var $next = $("#next");
 
-    var $prev = $("#prev");
-    var $next = $("#next");
+  function moveFirstSlide() {
+      var first = $carousel.find('li:first');
+      var last = $carousel.find('li:last');
+      last.after(first);
+      $carouselInner.css("margin-left", 0);
 
-    function changeSlide() {
-        currentSlide++;
-        if (currentSlide === $slide.length) {
-            currentSlide = 1;
-            $carouselInner.css("margin-left", 0)
-        };
     };
 
     function previousSlide() {
-        currentSlide--;
-        if (currentSlide === $slide.length) {
-            $carouselInner.css("margin-left", width);
-        };
-        if (currentSlide < 0) {
-            currentSlide = $slide.length - 1;
-        }
+      stopSlider();
+      var first = $carousel.find('li:first');
+      var last = $carousel.find('li:last');
+      first.before(last);
+      $carouselInner.css("margin-left", -width);
+
+      $carouselInner.animate({
+          "margin-left": 0
+      }, animationSpeed, startSlider);
+
+    }
+
+
+    function changeSlide() {
+      $carouselInner.animate({
+          "margin-left": "-=" + width
+      }, animationSpeed, moveFirstSlide);
     }
 
     function startSlider() {
-        interval = setInterval(function() {
-            $carouselInner.animate({
-                "margin-left": "-=" + width
-            }, animationSpeed, changeSlide);
-        }), pause;
+        clearInterval(interval);
+        interval = setInterval(changeSlide, pause);
     };
 
     function stopSlider() {
         clearInterval(interval);
     }
 
-    $next.on("click", changeSlide);
+    $next.click(changeSlide);
 
-    $prev.on("click", previousSlide);
+    $prev.click(previousSlide);
 
     $carousel.on("mouseenter", stopSlider).on("mouseleave", startSlider);
 
     startSlider();
-
-});
+  });
