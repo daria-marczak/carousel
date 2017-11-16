@@ -1,42 +1,42 @@
 $(function() {
-  var width = 640;
-  var animationSpeed = 500;
-  var pause = 1000;
+    var width = 640;
+    var animationSpeed = 500;
+    var pause = 1000;
 
-  var $carousel = $("#carousel");
-  var $carouselInner = $carousel.find("ul");
+    var $carousel = $("#carousel");
+    var $carouselInner = $carousel.find("ul");
 
-  var interval;
+    var interval;
 
-  var $prev = $("#prev");
-  var $next = $("#next");
+    var $prev = $("#prev");
+    var $next = $("#next");
 
-  function moveFirstSlide() {
-      var first = $carousel.find('li:first');
-      var last = $carousel.find('li:last');
-      last.after(first);
-      $carouselInner.css("margin-left", 0);
+    function moveFirstSlide() {
+        var first = $carousel.find('li:first');
+        var last = $carousel.find('li:last');
+        last.after(first);
+        $carouselInner.css("margin-left", 0);
 
     };
 
     function previousSlide() {
-      stopSlider();
-      var first = $carousel.find('li:first');
-      var last = $carousel.find('li:last');
-      first.before(last);
-      $carouselInner.css("margin-left", -width);
+        stopSlider();
+        var first = $carousel.find('li:first');
+        var last = $carousel.find('li:last');
+        first.before(last);
+        $carouselInner.css("margin-left", -width);
 
-      $carouselInner.animate({
-          "margin-left": 0
-      }, animationSpeed, startSlider);
+        $carouselInner.animate({
+            "margin-left": 0
+        }, animationSpeed, startSlider);
 
     }
 
 
     function changeSlide() {
-      $carouselInner.animate({
-          "margin-left": "-=" + width
-      }, animationSpeed, moveFirstSlide);
+        $carouselInner.animate({
+            "margin-left": "-=" + width
+        }, animationSpeed, moveFirstSlide);
     }
 
     function startSlider() {
@@ -55,4 +55,4 @@ $(function() {
     $carousel.on("mouseenter", stopSlider).on("mouseleave", startSlider);
 
     startSlider();
-  });
+});
